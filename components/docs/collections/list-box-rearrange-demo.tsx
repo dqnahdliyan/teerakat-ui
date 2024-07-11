@@ -1,0 +1,32 @@
+'use client'
+
+import { useDragAndDrop } from 'react-aria-components'
+import { useListData } from 'react-stately'
+import { ListBox } from 'ui'
+
+export default function ListBoxRearrangeDemo() {
+    let list = useListData({
+        initialItems: [
+            { id: '1', name: 'HTML' },
+            { id: '2', name: 'CSS' },
+            { id: '3', name: 'Javascript' },
+            { id: '4', name: 'Typescript' },
+            { id: '5', name: 'PHP' }
+        ]
+    })
+    let { dragAndDropHooks } = useDragAndDrop({
+        getItems: (keys: any) => [...keys].map((key) => ({ 'text/plain': list.getItem(key).name })),
+        onReorder(e: any) {
+            if (e.target.dropPosition === 'before') {
+                list.moveBefore(e.target.key, e.keys)
+            } else if (e.target.dropPosition === 'after') {
+                list.moveAfter(e.target.key, e.keys)
+            }
+        }
+    })
+    return (
+        <ListBox items={list.items} aria-label='Langueges' selectionMode='multiple' dragAndDropHooks={dragAndDropHooks}>
+            {(item) => <ListBox.Item key={item.id}>{item.name}</ListBox.Item>}
+        </ListBox>
+    )
+}

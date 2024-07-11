@@ -1,0 +1,337 @@
+---
+title: "Installation"
+description: To start using the design system, you need to install the required packages.
+order: 3
+published: true
+---
+
+## Requirements
+
+To get started with the design system, you need to install the following packages:
+
+<Snippet text={`bun i react-aria-components tailwindcss-react-aria-components tailwind-variants tailwind-merge clsx`} />
+
+After install these package for handling animations and icons:
+
+<Snippet text={`bun i framer-motion lucide-react tailwindcss-animate embla-carousel-react cmdk framer-motion input-otp sonner`} />
+
+## CSS
+
+First of all, you need to modify your root css file, like for example you are using laravel it's `resources/css/app.css` and you need to add the following code:
+
+```css
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+```
+
+### Variables
+
+Below that you need to add the following code:
+
+<PlainCode lang='css' code={`@layer base {
+    :root {
+        --font-sans: 'Inter';
+        --font-mono: 'Fira Code';
+
+        --background: 0 0% 98%;
+        --foreground: 240 10% 4%;
+
+        --primary: 221 83% 53%;
+        --primary-foreground: 0 0% 98%;
+
+        --secondary: 240 5% 84%;
+        --secondary-foreground: 240 10% 4%;
+
+        --danger: 347 77% 50%;
+        --danger-foreground: 0 0% 98%;
+
+        --success: 161 94% 30%;
+        --success-foreground: 0 0% 98%;
+
+        --info: 271 81% 56%;
+        --info-foreground: 0 0% 98%;
+
+        --warning: 21 90% 48%;
+        --warning-foreground: 0 0% 98%;
+
+        --dark: 240 10% 4%;
+        --dark-foreground: 0 0% 98%;
+
+        --muted: 240 5% 84%;
+        --muted-foreground: 240 5% 65%;
+
+        --accent: 221 83% 53%;
+        --accent-foreground: 0 0% 98%;
+
+        --popover: 0 0% 98%;
+        --popover-foreground: 240 10% 4%;
+
+        --card: 0 0% 98%;
+        --card-foreground: 240 10% 4%;
+
+        --border: 240 5% 84%;
+        --input: 240 5% 84%;
+        --ring: 221 83% 53%;
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+
+        --primary: 224 76% 48%;
+        --primary-foreground: 0 0% 98%;
+
+        --secondary: 240 5% 26%;
+        --secondary-foreground: 0 0% 98%;
+
+        --danger: 345 83% 41%;
+        --danger-foreground: 0 0% 98%;
+
+        --success: 163 94% 24%;
+        --success-foreground: 0 0% 98%;
+
+        --info: 272 72% 47%;
+        --info-foreground: 0 0% 98%;
+
+        --warning: 17 88% 40%;
+        --warning-foreground: 0 0% 98%;
+
+        --dark: 0 0% 98%;
+        --dark-foreground: 240 10% 3.9%;
+
+        --muted: 240 5% 26%;
+        --muted-foreground: 240 4% 46%;
+
+        --accent: 224 76% 48%;
+        --accent-foreground: 0 0% 98%;
+
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+
+        --border: 240 5% 26%;
+        --input: 240 5% 26%;
+        --ring: 224 76% 48%;
+    }
+}
+
+@layer base {
+    html {
+        @apply scroll-smooth;
+    }
+
+    * {
+        @apply border-border;
+        font-feature-settings: 'cv11', 'ss01';
+        font-variation-settings: 'opsz' 850;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: 'rlig' 1,
+        'calt' 1;
+    }
+}
+
+.react-aria-Button,
+.react-aria-Dialog {
+    outline: none;
+}
+
+.react-aria-DropIndicator[data-drop-target] {
+    outline: 1px solid hsl(var(--primary));
+}
+`} />
+
+### Scrollbars
+
+If you wan't to customize the scrollbars
+
+Install this package first
+
+<Snippet text={`bun i -D tailwind-scrollbar`} />
+
+Then you can add this one for scrollbars:
+
+<PlainCode lang='css' code={`*,
+.overflow-auto,
+.overflow-scroll,
+.overflow-x-scroll,
+.overflow-y-scroll,
+.overflow-y-auto,
+.overflow-x-auto {
+    @apply ease-in-out scrollbar-none scrollbar-track-background scrollbar-thumb-background scrollbar-thumb-rounded-full;
+}
+
+*,
+.overflow-auto:hover,
+.overflow-scroll:hover,
+.overflow-x-scroll:hover,
+.overflow-y-scroll:hover,
+.overflow-y-auto:hover,
+.overflow-x-auto:hover {
+    @apply scrollbar-thin scrollbar-thumb-border;
+}
+`} />
+
+## Tailwind Configuration
+
+You need to change your `tailwind.config.ts`.
+
+<PlainCode lang='js' code={`import type { Config } from 'tailwindcss'
+import { fontFamily } from 'tailwindcss/defaultTheme'
+
+/** @type {import('tailwindcss').Config} */
+const config: Config = {
+    content: ['./components/**/*.{js,ts,jsx,tsx,mdx}', './app/**/*.{js,ts,jsx,tsx,mdx}'],
+    darkMode: 'class',
+    theme: {
+        container: {
+            center: true,
+            padding: {
+                DEFAULT: '1rem',
+                sm: '2rem'
+            },
+            screens: {
+                '2xl': '1400px'
+            }
+        },
+        fontFamily: {
+            sans: ['var(--font-sans)', ...fontFamily.sans],
+            mono: ['var(--font-mono)', ...fontFamily.mono]
+        },
+        extend: {
+            colors: {
+                background: 'hsl(var(--background))',
+                foreground: 'hsl(var(--foreground))',
+                border: 'hsl(var(--border))',
+                primary: {
+                    DEFAULT: 'hsl(var(--primary))',
+                    foreground: 'hsl(var(--primary-foreground))'
+                },
+                secondary: {
+                    DEFAULT: 'hsl(var(--secondary))',
+                    foreground: 'hsl(var(--secondary-foreground))'
+                },
+                danger: {
+                    DEFAULT: 'hsl(var(--danger))',
+                    foreground: 'hsl(var(--danger-foreground))'
+                },
+                success: {
+                    DEFAULT: 'hsl(var(--success))',
+                    foreground: 'hsl(var(--success-foreground))'
+                },
+                info: {
+                    DEFAULT: 'hsl(var(--info))',
+                    foreground: 'hsl(var(--info-foreground))'
+                },
+                warning: {
+                    DEFAULT: 'hsl(var(--warning))',
+                    foreground: 'hsl(var(--warning-foreground))'
+                },
+                dark: {
+                    DEFAULT: 'hsl(var(--dark))',
+                    foreground: 'hsl(var(--dark-foreground))'
+                },
+                accent: {
+                    DEFAULT: 'hsl(var(--accent))',
+                    foreground: 'hsl(var(--accent-foreground))'
+                },
+                muted: {
+                    DEFAULT: 'hsl(var(--muted))',
+                    foreground: 'hsl(var(--muted-foreground))'
+                },
+                popover: {
+                    DEFAULT: 'hsl(var(--popover))',
+                    foreground: 'hsl(var(--popover-foreground))'
+                },
+                card: {
+                    DEFAULT: 'hsl(var(--card))',
+                    foreground: 'hsl(var(--card-foreground))'
+                },
+                input: 'hsl(var(--input))',
+                toggle: 'hsl(var(--toggle))',
+                ring: 'hsl(var(--ring))'
+            },
+            borderRadius: {
+                lg: 'var(--radius)',
+                md: 'calc(var(--radius) - 2px)',
+                sm: 'calc(var(--radius) - 4px)'
+            },
+            keyframes: {
+                'accordion-down': {
+                    from: { height: '0' },
+                    to: { height: '50' }
+                },
+                'accordion-up': {
+                    from: { height: '50' },
+                    to: { height: '0' }
+                }
+            },
+            animation: {
+                'accordion-down': 'accordion-down 0.2s ease-in-out',
+                'accordion-up': 'accordion-up 0.2s ease-in-out'
+            }
+        }
+    },
+    plugins: [
+        require('tailwindcss-animate'),
+        require('tailwind-scrollbar')({
+            nocompatible: true,
+            preferredStrategy: 'pseudoelements'
+        }),
+        require('@tailwindcss/typography'),
+        require('tailwindcss-react-aria-components')
+    ]
+} satisfies Config
+
+export default config
+`} />
+
+## Utils
+
+Use a cn helper to make it easier to conditionally add Tailwind CSS classes. Here's how to define it in lib/utils.ts:
+
+<PlainCode lang='js' code={`'use client'
+
+import React from 'react'
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
+
+export function useMediaQuery(query: string) {
+    const [value, setValue] = React.useState(false)
+
+    React.useEffect(() => {
+        function onChange(event: MediaQueryListEvent) {
+            setValue(event.matches)
+        }
+
+        const result = matchMedia(query)
+        result.addEventListener('change', onChange)
+        setValue(result.matches)
+
+        return () => result.removeEventListener('change', onChange)
+    }, [query])
+
+    return value
+}
+
+export function formatDate(input: string | number): string {
+    const date = new Date(input)
+    return date.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    })
+}
+
+export function wait(number: number = 1000) {
+    return new Promise((resolve) => setTimeout(resolve, number))
+}
+`} />
