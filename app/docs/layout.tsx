@@ -1,4 +1,5 @@
 import { Aside } from '@/components/aside'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ReactNode } from 'react'
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
@@ -15,7 +16,7 @@ export default function DocsLayout({ children }: { children: ReactNode }) {
                 </div>
                 {children}
 
-                {/* <SpeedInsights /> */}
+                <SpeedInsights />
             </div>
         </div>
     )

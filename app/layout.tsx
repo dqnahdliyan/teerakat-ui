@@ -4,6 +4,7 @@ import { Providers } from '@/components/providers'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import '@/styles/globals.css'
+import { Analytics } from '@vercel/analytics/react'
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import React from 'react'
@@ -44,7 +45,7 @@ export default function RootLayout({
                         <main className='flex-1'>{children}</main>
                         <Footer />
                     </div>
-                    {/* <Analytics /> */}
+                    <Analytics />
                 </Providers>
             </body>
         </html>
