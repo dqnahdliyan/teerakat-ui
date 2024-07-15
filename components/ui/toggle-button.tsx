@@ -9,8 +9,8 @@ let styles = tv({
     ],
     variants: {
         isSelected: {
-            false: 'pressed:bg-tertiary hover:bg-secondary',
-            true: 'bg-secondary hover:bg-secondary/80 pressed:bg-secondary/70'
+            false: 'pressed:bg-muted-foreground hover:bg-muted',
+            true: 'bg-secondary hover:bg-muted pressed:bg-muted-foreground'
         },
         isDisabled: {
             true: 'border-black/5 bg-background text-muted-foreground'

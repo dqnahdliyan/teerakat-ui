@@ -150,7 +150,7 @@ export function ResponsiveAside({ open, setOpen }: OpenCloseProps) {
                                     <Icon icon='Home' />
                                     Home
                                 </AsideLink>
-                                <AsideLink href='/docs/getting-started/intro'>
+                                <AsideLink href='/docs/getting-started/introduction'>
                                     <Icon icon='StickyNote' /> Docs
                                 </AsideLink>
                                 <AsideLink href='https://github.com/dqnahdliyan' target='_blank'>

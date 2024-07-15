@@ -63,40 +63,166 @@ declare module 'react-aria-components' {
 }
 ```
 
-Then in your `resources/js/app.tsx` you can wrap `<App/>` within `RouterProvider` like this:
+create a provider in your components folder `components/providers.tsx` and paste this code:
 
 ```tsx
-import '../css/app.css'
-import './bootstrap'
+import {
+    createContext,
+    ReactNode,
+    useContext,
+    useEffect,
+    useState,
+} from "react";
+import { router } from "@inertiajs/react";
+import { RouterProvider } from "react-aria-components";
 
-import { createInertiaApp, router } from '@inertiajs/react'
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
-import { createRoot, hydrateRoot } from 'react-dom/client'
+type Theme = "dark" | "light" | "system";
 
-import { Ziggy } from '@/ziggy'
-import { useRoute } from 'ziggy-js'
-import { RouterProvider } from 'react-aria-components'
+type ThemeProviderProps = {
+    children: ReactNode;
+    defaultTheme?: Theme;
+    storageKey?: string;
+};
 
-createInertiaApp({
-    title: (title) => (title ? `${title} / irsyad.co` : title),
-    resolve: (name) => resolvePageComponent(`./pages/${name}.tsx`, import.meta.glob('./pages/**/*.tsx')),
-    setup({ el, App, props }) {
-        // @ts-expect-error
-        window.route = useRoute(Ziggy)
-        const appElement = (
-            <RouterProvider navigate={(to, options) => router.visit(to, options as any)}>
-                <App {...props} />
-            </RouterProvider>
-        )
-        if (import.meta.env.DEV) {
-            createRoot(el).render(appElement)
-            return
+type ThemeProviderState = {
+    theme: Theme;
+    setTheme: (theme: Theme) => void;
+};
+
+const initialState: ThemeProviderState = {
+    theme: "system",
+    setTheme: () => null,
+};
+
+const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
+
+function ThemeProvider({
+    children,
+    defaultTheme = "system",
+    storageKey = "inertia-ui-theme",
+    ...props
+}: ThemeProviderProps) {
+    const [theme, setTheme] = useState<Theme>(
+        () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
+    );
+
+    useEffect(() => {
+        const root = window.document.documentElement;
+
+        root.classList.remove("light", "dark");
+
+        if (theme === "system") {
+            const systemTheme = window.matchMedia(
+                "(prefers-color-scheme: dark)",
+            ).matches
+                ? "dark"
+                : "light";
+
+            root.classList.add(systemTheme);
+            return;
         }
 
-        hydrateRoot(el, appElement)
+        const metaThemeColor = document.getElementById("theme-color-meta");
+        if (metaThemeColor) {
+            if (theme === "dark") {
+                metaThemeColor.setAttribute("content", "#000000");
+            } else if (theme === "light") {
+                metaThemeColor.setAttribute("content", "#ffffff");
+            } else if (theme === "system") {
+                if (
+                    window.matchMedia &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches
+                ) {
+                    metaThemeColor.setAttribute("content", "#000000");
+                } else {
+                    metaThemeColor.setAttribute("content", "#ffffff");
+                }
+            } else {
+                metaThemeColor.setAttribute("content", "#ffffff");
+            }
+        }
+
+        root.classList.add(theme);
+    }, [theme]);
+
+    const value = {
+        theme,
+        setTheme: (theme: Theme) => {
+            localStorage.setItem(storageKey, theme);
+            setTheme(theme);
+        },
+    };
+
+    return (
+        <ThemeProviderContext.Provider {...props} value={value}>
+            {children}
+        </ThemeProviderContext.Provider>
+    );
+}
+
+const Provider = ({ children }: { children: ReactNode }) => (
+    <RouterProvider
+        navigate={(to, options) => router.visit(to, options as any)}
+    >
+        <ThemeProvider defaultTheme="system" storageKey="vite-theme">
+            {children}
+        </ThemeProvider>
+    </RouterProvider>
+);
+
+const useTheme = () => {
+    const context = useContext(ThemeProviderContext);
+
+    if (context === undefined)
+        throw new Error("useTheme must be used within a ThemeProvider");
+
+    return context;
+};
+
+export {
+    Provider,
+    useTheme,
+    type Theme,
+};
+```
+
+Then in your `resources/js/app.tsx` you can wrap `<App/>` within `Provider` like this:
+
+```tsx
+import "./bootstrap";
+import "../css/app.css";
+
+import { createRoot, hydrateRoot } from "react-dom/client";
+import { createInertiaApp } from "@inertiajs/react";
+import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
+import { Provider } from "@/components/providers";
+
+const appName = import.meta.env.VITE_APP_NAME || "Laravel";
+
+createInertiaApp({
+    title: (title) => (title ? `${title} | ${appName}` : appName),
+    resolve: (name) =>
+        resolvePageComponent(
+            `./pages/${name}.tsx`,
+            import.meta.glob("./pages/**/*.tsx"),
+        ),
+    setup({ el, App, props }) {
+        const appElement = (
+            <Provider>
+                <App {...props} />
+            </Provider>
+        );
+        if (import.meta.env.DEV) {
+            createRoot(el).render(appElement);
+            return;
+        }
+
+        hydrateRoot(el, appElement);
     },
-    progress: false
-})
+    progress: {
+        color: "#4B5563",
+    },
+});
 ```
 
 ### Next.js

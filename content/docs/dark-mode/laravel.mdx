@@ -8,129 +8,195 @@ references: ['https://laravel.com/docs/11.x', 'https://inertiajs.com/']
 
 ## Theme Provider
 
-When you’re rockin' Inertia.js, gotta whip up a provider called `theme-provider.tsx` and drop it in the `resources/js/components` folder.
+If you using Inertia.ts with React Aria Components, you need to wrap your project in provider called `provider.tsx` and drop it in the `resources/js/components` folder.
 
-<PlainCode lang="tsx" code={`import { createContext, useContext, useEffect, useState } from 'react'
+<PlainCode lang="tsx" code={`import {
+    createContext,
+    ReactNode,
+    useContext,
+    useEffect,
+    useState,
+} from "react";
+import { router } from "@inertiajs/react";
+import { RouterProvider } from "react-aria-components";
 
-type Theme = 'dark' | 'light' | 'system'
+type Theme = "dark" | "light" | "system";
 
 type ThemeProviderProps = {
-  children: React.ReactNode
-  defaultTheme?: Theme
-  storageKey?: string
-}
+    children: ReactNode;
+    defaultTheme?: Theme;
+    storageKey?: string;
+};
 
 type ThemeProviderState = {
-  theme: Theme
-  setTheme: (theme: Theme) => void
-}
+    theme: Theme;
+    setTheme: (theme: Theme) => void;
+};
 
 const initialState: ThemeProviderState = {
-  theme: 'system',
-  setTheme: () => null
-}
+    theme: "system",
+    setTheme: () => null,
+};
 
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
+const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-function ThemeProvider({ children, defaultTheme = 'system', storageKey = 'inertia-ui-theme', ...props }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem(storageKey) as Theme) || defaultTheme)
+function ThemeProvider({
+    children,
+    defaultTheme = "system",
+    storageKey = "inertia-ui-theme",
+    ...props
+}: ThemeProviderProps) {
+    const [theme, setTheme] = useState<Theme>(
+        () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
+    );
 
-  useEffect(() => {
-    const root = window.document.documentElement
+    useEffect(() => {
+        const root = window.document.documentElement;
 
-    root.classList.remove('light', 'dark')
+        root.classList.remove("light", "dark");
 
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        if (theme === "system") {
+            const systemTheme = window.matchMedia(
+                "(prefers-color-scheme: dark)",
+            ).matches
+                ? "dark"
+                : "light";
 
-      root.classList.add(systemTheme)
-      return
-    }
-
-    const metaThemeColor = document.getElementById('theme-color-meta')
-    if (metaThemeColor) {
-      if (theme === 'dark') {
-        metaThemeColor.setAttribute('content', '#000000')
-      } else if (theme === 'light') {
-        metaThemeColor.setAttribute('content', '#ffffff')
-      } else if (theme === 'system') {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          metaThemeColor.setAttribute('content', '#000000')
-        } else {
-          metaThemeColor.setAttribute('content', '#ffffff')
+            root.classList.add(systemTheme);
+            return;
         }
-      } else {
-        metaThemeColor.setAttribute('content', '#ffffff')
-      }
-    }
 
-    root.classList.add(theme)
-  }, [theme])
+        const metaThemeColor = document.getElementById("theme-color-meta");
+        if (metaThemeColor) {
+            if (theme === "dark") {
+                metaThemeColor.setAttribute("content", "#000000");
+            } else if (theme === "light") {
+                metaThemeColor.setAttribute("content", "#ffffff");
+            } else if (theme === "system") {
+                if (
+                    window.matchMedia &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches
+                ) {
+                    metaThemeColor.setAttribute("content", "#000000");
+                } else {
+                    metaThemeColor.setAttribute("content", "#ffffff");
+                }
+            } else {
+                metaThemeColor.setAttribute("content", "#ffffff");
+            }
+        }
 
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme)
-      setTheme(theme)
-    }
-  }
+        root.classList.add(theme);
+    }, [theme]);
 
-  return (
-    <ThemeProviderContext.Provider {...props} value={value}>
-      {children}
-    </ThemeProviderContext.Provider>
-  )
+    const value = {
+        theme,
+        setTheme: (theme: Theme) => {
+            localStorage.setItem(storageKey, theme);
+            setTheme(theme);
+        },
+    };
+
+    return (
+        <ThemeProviderContext.Provider {...props} value={value}>
+            {children}
+        </ThemeProviderContext.Provider>
+    );
 }
+
+const Provider = ({ children }: { children: ReactNode }) => (
+    <RouterProvider
+        navigate={(to, options) => router.visit(to, options as any)}
+    >
+        <ThemeProvider defaultTheme="system" storageKey="vite-theme">
+            {children}
+        </ThemeProvider>
+    </RouterProvider>
+);
 
 const useTheme = () => {
-  const context = useContext(ThemeProviderContext)
+    const context = useContext(ThemeProviderContext);
 
-  if (context === undefined) throw new Error('useTheme must be used within a ThemeProvider')
+    if (context === undefined)
+        throw new Error("useTheme must be used within a ThemeProvider");
 
-  return context
-}
+    return context;
+};
 
-export { ThemeProvider, useTheme, type Theme, type ThemeProviderProps, type ThemeProviderState }
+export {
+    ThemeProvider,
+    useTheme,
+    Provider,
+    type Theme,
+    type ThemeProviderProps,
+    type ThemeProviderState,
+};
 `}/>
+
+Then you need to declare it your .d.ts file for example `global.d.ts`.
+
+<PlainCode lang='tsx' code={`
+import { FormDataConvertible, Method, PreserveStateOption, Progress } from '@inertiajs/core'
+
+declare module 'react-aria-components' {
+    interface RouterConfig {
+        routerOptions: {
+            method?: Method
+            data?: Record<string, FormDataConvertible>
+            replace?: boolean
+            preserveState?: PreserveStateOption
+            preserveScroll?: PreserveStateOption
+            forceFormData?: boolean
+            only?: string[]
+            onBefore?: () => void
+            onStart?: () => void
+            onProgress?: (progress: Progress) => void
+            onCancel?: () => void
+            onSuccess?: () => void
+            onError?: () => void
+            onFinish?: () => void
+        }
+    }
+}
+`}>
 
 ## Root App
 You can stash it in your `resources/js/app.tsx` like this:
 
-<PlainCode code={`import './bootstrap';
-import '../css/app.css';
+<PlainCode code={`import "./bootstrap";
+import "../css/app.css";
 
-import { createRoot, hydrateRoot } from 'react-dom/client';
-import { createInertiaApp } from '@inertiajs/react';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { createRoot, hydrateRoot } from "react-dom/client";
+import { createInertiaApp } from "@inertiajs/react";
+import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
+import { Provider } from "@/components/providers";
 
-import { Ziggy } from '@/ziggy'
-import { useRoute } from 'ziggy-js'
-import { ThemeProvider } from "@/Components/theme-provider";
-
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
 createInertiaApp({
-  title: (title) => title + ' | ' + appName,
-  resolve: (name) => resolvePageComponent('./Pages/'+ name +'.tsx', import.meta.glob('./Pages/**/*.tsx')),
-  setup({ el, App, props }) {
-    window.route = useRoute(Ziggy as any)
-    const appElement = (
-      <ThemeProvider>
-        <App {...props} />
-      </ThemeProvider>
-    )
-
+    title: (title) => (title ? `${title} | ${appName}` : appName),
+    resolve: (name) =>
+        resolvePageComponent(
+            `./pages/${name}.tsx`,
+            import.meta.glob("./pages/**/*.tsx"),
+        ),
+    setup({ el, App, props }) {
+        const appElement = (
+            <Provider>
+                <App {...props} />
+            </Provider>
+        );
         if (import.meta.env.DEV) {
-          createRoot(el).render(appElement);
-          return
+            createRoot(el).render(appElement);
+            return;
         }
 
         hydrateRoot(el, appElement);
-      },
-      progress: {
-        color: '#4B5563',
-      },
-    });
+    },
+    progress: {
+        color: "#4B5563",
+    },
+});
 `}/>
 
 ## Theme Switcher
@@ -155,35 +221,4 @@ export function ThemeSwitcher() {
     </Button>
   )
 }
-```
-
-## Group Providers
-When you're juggling multiple providers, like React Aria Components, you need a `RouterProvider`. To combine 'em all, just create a new file called `providers.tsx` in your `resources/js` folder and drop in this code:
-```
-import { ThemeProvider } from '@/Components/theme-provider'
-import { router } from '@inertiajs/react'
-import React from 'react'
-import { RouterProvider } from 'react-aria-components'
-
-export function Provider({ children }: { children: React.ReactNode }) {
-  return (
-    <RouterProvider navigate={(to, options) => router.visit(to, options as any)}>
-      <ThemeProvider defaultTheme="system" storageKey="vite-theme">
-        {children}
-      </ThemeProvider>
-    </RouterProvider>
-  )
-}
-```
-
-Next up, tweak your `resources/js/app.tsx` file to include this:
-
-```tsx {1} {4-6}
-import { Provider } from './provider'
-
-const appElement = (
-  <Provider>
-    <App {...props} />
-  </Provider>
-)
 ```

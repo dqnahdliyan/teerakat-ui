@@ -20,7 +20,7 @@ function SearchField({ placeholder = 'Search', label, description, errorMessage,
             <FieldGroup>
                 <Search
                     aria-hidden
-                    className='ml-2 size-4 shrink-0 text-muted-foreground group-disabled:text-muted-foreground/50'
+                    className='ml-2 size-4 shrink-0 text-muted-foreground group-disabled:text-muted-foreground/70'
                 />
                 <Input placeholder={placeholder} className='[&::-webkit-search-cancel-button]:hidden' />
                 <Button

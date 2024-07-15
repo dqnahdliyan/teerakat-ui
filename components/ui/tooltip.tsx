@@ -10,7 +10,7 @@ export interface TooltipProps extends Omit<Primitive.TooltipProps, 'children'> {
 
 const tooltipStyles = tv({
     base: [
-        'group rounded-lg border bg-popover px-1.5 py-1 text-sm text-popover-foreground will-change-transform dark:shadow-none',
+        'group rounded-lg border bg-background px-1.5 py-1 text-sm text-foreground will-change-transform dark:shadow-none',
         // Placement
         'placement-left:slide-in-from-right-1 placement-right:slide-in-from-left-1 placement-top:slide-in-from-bottom-1 placement-bottom:slide-in-from-top-1'
     ],

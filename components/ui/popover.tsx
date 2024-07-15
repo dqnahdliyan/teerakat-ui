@@ -11,7 +11,7 @@ export interface PopoverProps extends Omit<Primitive.PopoverProps, 'children'> {
 }
 
 const styles = tv({
-    base: 'max-w-xs rounded-xl border bg-popover bg-clip-padding p-4 text-popover-foreground shadow-lg dark:backdrop-blur-2xl dark:backdrop-saturate-200 sm:max-w-3xl',
+    base: 'max-w-xs rounded-xl border bg-background bg-clip-padding p-4 text-foreground shadow-lg dark:backdrop-blur-2xl dark:backdrop-saturate-200 sm:max-w-3xl',
     variants: {
         isEntering: {
             true: 'duration-200 ease-out animate-in fade-in placement-left:slide-in-from-right-1 placement-right:slide-in-from-left-1 placement-top:slide-in-from-bottom-1 placement-bottom:slide-in-from-top-1'
@@ -66,7 +66,7 @@ const PopoverContent = ({ children, showArrow = true, className, ...props }: Pop
                         width={12}
                         height={12}
                         viewBox='0 0 12 12'
-                        className='block fill-popover stroke-border group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180'
+                        className='block fill-background stroke-border group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180'
                     >
                         <path d='M0 0 L6 6 L12 0' />
                     </svg>

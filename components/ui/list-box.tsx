@@ -51,7 +51,7 @@ const ListBoxItem = <T extends object>({
                                     'size-4 shrink-0 text-muted-foreground transition',
                                     values.isFocused && 'text-foreground',
                                     values.isDragging && 'text-foreground',
-                                    values.isSelected && 'text-primary-foreground/70'
+                                    values.isSelected && 'text-primary-foreground'
                                 )}
                             />
                         )}

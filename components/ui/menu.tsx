@@ -63,7 +63,7 @@ const MenuContent = <T extends object>({
         <Primitive.Popover
             offset={currentOffset}
             className={cn(
-                'z-50 min-w-40 rounded-xl border bg-popover text-popover-foreground outline-none data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 entering:animate-in entering:fade-in-0 exiting:animate-out exiting:fade-out-0 exiting:zoom-out-95',
+                'z-50 min-w-40 rounded-xl border bg-background text-foreground outline-none data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2 entering:animate-in entering:fade-in-0 exiting:animate-out exiting:fade-out-0 exiting:zoom-out-95',
                 popoverClassName
             )}
             {...props}

@@ -27,30 +27,44 @@ const config: Config = {
                 border: 'hsl(var(--border))',
                 primary: {
                     DEFAULT: 'hsl(var(--primary))',
+                    lighter: 'hsl(var(--primary-lighter))',
+                    darker: 'hsl(var(--primary-darker))',
                     foreground: 'hsl(var(--primary-foreground))'
                 },
                 secondary: {
                     DEFAULT: 'hsl(var(--secondary))',
+                    lighter: 'hsl(var(--secondary-lighter))',
+                    darker: 'hsl(var(--secondary-darker))',
                     foreground: 'hsl(var(--secondary-foreground))'
                 },
                 danger: {
                     DEFAULT: 'hsl(var(--danger))',
+                    lighter: 'hsl(var(--danger-lighter))',
+                    darker: 'hsl(var(--danger-darker))',
                     foreground: 'hsl(var(--danger-foreground))'
                 },
                 success: {
                     DEFAULT: 'hsl(var(--success))',
+                    lighter: 'hsl(var(--success-lighter))',
+                    darker: 'hsl(var(--success-darker))',
                     foreground: 'hsl(var(--success-foreground))'
                 },
                 info: {
                     DEFAULT: 'hsl(var(--info))',
+                    lighter: 'hsl(var(--info-lighter))',
+                    darker: 'hsl(var(--info-darker))',
                     foreground: 'hsl(var(--info-foreground))'
                 },
                 warning: {
                     DEFAULT: 'hsl(var(--warning))',
+                    lighter: 'hsl(var(--warning-lighter))',
+                    darker: 'hsl(var(--warning-darker))',
                     foreground: 'hsl(var(--warning-foreground))'
                 },
                 dark: {
                     DEFAULT: 'hsl(var(--dark))',
+                    lighter: 'hsl(var(--dark-lighter))',
+                    darker: 'hsl(var(--dark-darker))',
                     foreground: 'hsl(var(--dark-foreground))'
                 },
                 accent: {
@@ -61,15 +75,7 @@ const config: Config = {
                     DEFAULT: 'hsl(var(--muted))',
                     foreground: 'hsl(var(--muted-foreground))'
                 },
-                popover: {
-                    DEFAULT: 'hsl(var(--popover))',
-                    foreground: 'hsl(var(--popover-foreground))'
-                },
-                card: {
-                    DEFAULT: 'hsl(var(--card))',
-                    foreground: 'hsl(var(--card-foreground))'
-                },
-                input: 'hsl(var(--input))',
+                input: 'hsl(var(--border))',
                 toggle: 'hsl(var(--toggle))',
                 ring: 'hsl(var(--ring))'
             },

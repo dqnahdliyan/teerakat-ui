@@ -34,7 +34,7 @@ const segmentStyles = tv({
             true: 'text-muted-foreground'
         },
         isDisabled: {
-            true: 'text-foreground/50'
+            true: 'text-muted-foreground'
         },
         isFocused: {
             true: 'bg-primary text-primary-foreground'
@@ -46,7 +46,7 @@ const DateInput = (props: Omit<Primitive.DateInputProps, 'children'>) => {
     return (
         <Primitive.DateInput
             className={cn(
-                'min-w-sm block w-full px-2 py-2 font-mono uppercase disabled:bg-secondary lg:text-sm',
+                'min-w-sm block w-full px-2 py-2 font-mono uppercase disabled:bg-muted lg:text-sm',
                 fieldGroupStyles.base,
                 props.className
             )}

@@ -127,7 +127,7 @@ const DrawerContent = ({ children, className, ...props }: DrawerContentProps) =>
                     >
                         <MotionModal
                             className={cn(
-                                'absolute bottom-0 w-full rounded-t-2xl bg-popover shadow-lg ring-1 ring-foreground/10',
+                                'absolute bottom-0 w-full rounded-t-2xl bg-background shadow-lg ring-1 ring-foreground/20',
                                 className
                             )}
                             initial={{ y: h }}

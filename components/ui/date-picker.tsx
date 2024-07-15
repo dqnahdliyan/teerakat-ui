@@ -33,7 +33,7 @@ function DatePicker<T extends Primitive.DateValue>({ label, description, errorMe
             </FieldGroup>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
-            <Popover.Content className='rounded-xl border bg-popover p-0'>
+            <Popover.Content className='rounded-xl border bg-background p-0'>
                 <Dialog>
                     <Calendar />
                 </Dialog>
@@ -73,7 +73,7 @@ function DateRangePicker<T extends Primitive.DateValue>({
             </FieldGroup>
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
-            <Popover.Content className='rounded-xl border bg-popover p-0'>
+            <Popover.Content className='rounded-xl border bg-background p-0'>
                 <Dialog>
                     <Calendar.RangeCalendar />
                 </Dialog>

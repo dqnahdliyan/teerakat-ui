@@ -14,17 +14,15 @@ const noteStyles = tv({
     variants: {
         variant: {
             primary:
-                'border-primary bg-primary/10 leading-4 text-primary ring-primary/20 [&_a]:text-primary [&_svg]:text-primary',
+                'border-primary bg-background leading-4 text-primary ring-primary [&_a]:text-primary [&_svg]:text-primary',
             secondary:
-                'border-secondary bg-secondary leading-4 text-secondary-foreground ring-secondary/20 [&_a]:text-secondary-foreground [&_svg]:text-secondary-foreground',
-            info: 'border-info bg-info/10 leading-4 text-info ring-info/20 [&_a]:text-info [&_svg]:text-info',
+                'border-secondary bg-background leading-4 text-secondary-foreground ring-foreground [&_a]:text-secondary-foreground [&_svg]:text-secondary-foreground',
+            info: 'border-info bg-background leading-4 text-info ring-info [&_a]:text-info [&_svg]:text-info',
             warning:
-                'border-warning bg-warning/10 leading-4 text-warning ring-warning/20 [&_a]:text-warning [&_svg]:text-warning',
-            danger: 'border-danger bg-danger/10 leading-4 text-danger ring-danger/20 [&_a]:text-danger [&_svg]:text-danger',
+                'border-warning bg-background leading-4 text-warning ring-warning [&_a]:text-warning [&_svg]:text-warning',
+            danger: 'border-danger bg-background leading-4 text-danger ring-danger [&_a]:text-danger [&_svg]:text-danger',
             success:
-                'border-success bg-success/10 leading-4 text-success ring-success/20 [&_a]:text-success [&_svg]:text-success',
-            outline:
-                'border-foreground bg-background leading-4 text-foreground [&_a]:text-foreground [&_svg]:text-foreground'
+                'border-success bg-background leading-4 text-success ring-success [&_a]:text-success [&_svg]:text-success'
         }
     },
     defaultVariants: {

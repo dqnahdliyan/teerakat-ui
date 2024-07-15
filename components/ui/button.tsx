@@ -10,18 +10,18 @@ const buttonVariants = tv({
     variants: {
         variant: {
             primary:
-                'bg-primary text-primary-foreground shadow-sm hover:bg-primary/80 pressed:bg-primary/90 pressed:ring pressed:ring-primary/40',
+                'bg-primary text-primary-foreground hover:bg-primary-lighter pressed:bg-primary-darker pressed:ring pressed:ring-primary/40 shadow-sm',
             secondary:
-                'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 pressed:bg-secondary/90 pressed:ring pressed:ring-secondary/40',
-            danger: 'bg-danger text-danger-foreground shadow-sm hover:bg-danger/80 pressed:bg-danger/90 pressed:ring pressed:ring-danger/40',
+                'bg-secondary text-secondary-foreground hover:bg-secondary-lighter pressed:bg-secondary-darker pressed:ring pressed:ring-secondary/40 shadow-sm',
+            danger: 'bg-danger text-danger-foreground hover:bg-danger-lighter pressed:bg-danger-darker pressed:ring pressed:ring-danger/40 shadow-sm',
             success:
-                'bg-success text-success-foreground shadow-sm hover:bg-success/80 pressed:bg-success/90 pressed:ring pressed:ring-success/40',
-            info: 'bg-info text-info-foreground shadow-sm hover:bg-info/80 pressed:bg-info/90 pressed:ring pressed:ring-info/40',
+                'bg-success text-success-foreground hover:bg-success-lighter pressed:bg-success-darker pressed:ring pressed:ring-success/40 shadow-sm',
+            info: 'bg-info text-info-foreground hover:bg-info-lighter pressed:bg-info-darker pressed:ring pressed:ring-info/40 shadow-sm',
             warning:
-                'bg-warning text-warning-foreground shadow-sm hover:bg-warning/80 pressed:bg-warning/90 pressed:ring pressed:ring-warning/40',
-            dark: 'bg-dark text-dark-foreground shadow-sm hover:bg-dark/80 pressed:bg-dark/90 pressed:ring pressed:ring-dark/40',
-            outline: 'border bg-transparent text-foreground shadow-sm hover:bg-foreground/5 pressed:bg-foreground/10',
-            ghost: 'text-foreground hover:bg-foreground/5 pressed:bg-foreground/10'
+                'bg-warning text-warning-foreground hover:bg-warning-lighter pressed:bg-warning-darker pressed:ring pressed:ring-warning/40 shadow-sm',
+            dark: 'bg-dark text-dark-foreground hover:bg-dark-lighter pressed:bg-dark-darker pressed:ring pressed:ring-dark/40 shadow-sm',
+            outline: 'border bg-transparent text-foreground shadow-sm hover:bg-muted-foreground pressed:bg-muted',
+            ghost: 'text-foreground bg-transparent hover:bg-muted pressed:bg-muted-foreground'
         },
         size: {
             md: 'h-10 px-4 py-2',

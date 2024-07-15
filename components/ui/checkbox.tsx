@@ -30,18 +30,18 @@ const boxStyles = tv({
     variants: {
         isSelected: {
             true: [
-                'border-primary/70 bg-primary text-primary-foreground',
-                'group-invalid:border-danger/70 group-invalid:bg-danger group-invalid:text-danger-foreground'
+                'border-primary bg-primary text-primary-foreground',
+                'group-invalid:border-danger group-invalid:bg-danger group-invalid:text-danger-foreground'
             ]
         },
         isFocused: {
             true: [
-                'border-primary/70 ring-4 ring-primary/20',
-                'group-invalid:border-danger/70 group-invalid:text-danger-foreground group-invalid:ring-danger/20'
+                'border-primary ring-4 ring-primary/20',
+                'group-invalid:border-danger group-invalid:text-danger-foreground group-invalid:ring-danger/20'
             ]
         },
         isInvalid: {
-            true: 'border-danger/70 bg-danger/20 text-danger-foreground ring-danger/20'
+            true: 'border-danger bg-danger-lighter text-danger-foreground ring-danger/20'
         }
     }
 })

@@ -17,7 +17,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
             toastOptions={{
                 unstyled: true,
                 className: cn(
-                    'group flex w-full gap-x-1 overflow-hidden rounded-lg bg-popover p-4 text-sm text-popover-foreground ring-1 ring-border backdrop-blur-xl',
+                    'group flex w-full gap-x-1 overflow-hidden rounded-lg bg-background p-4 text-sm text-foreground ring-1 ring-border backdrop-blur-xl',
                     '[&_svg]:mt-1.5 [&_svg]:size-5'
                 ),
                 classNames: {

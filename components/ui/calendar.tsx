@@ -6,11 +6,11 @@ import { tv } from 'tailwind-variants'
 import { Button } from './button'
 
 const cellStyles = tv({
-    base: 'flex size-9 cursor-default items-center justify-center rounded-full text-sm outline-none focus:outline-none',
+    base: 'flex size-9 cursor-default items-center justify-center rounded-md text-sm outline-none focus:outline-none',
     variants: {
         isSelected: {
-            false: 'text-foreground hover:bg-accent/70',
-            true: 'bg-accent text-accent-foreground invalid:bg-danger invalid:text-danger-foreground'
+            false: 'text-foreground hover:bg-primary/20',
+            true: 'bg-primary text-primary-foreground invalid:bg-danger invalid:text-danger-foreground'
         },
         isDisabled: {
             true: 'text-muted-foreground'
@@ -75,17 +75,17 @@ interface RangeCalendarProps<T extends Primitive.DateValue>
 }
 
 const cell = tv({
-    base: 'flex h-full w-full items-center justify-center rounded-full text-foreground',
+    base: 'flex h-full w-full items-center justify-center rounded-md',
     variants: {
         selectionState: {
-            none: 'group-hover:bg-accent/70 group-pressed:bg-accent/70',
+            none: 'group-hover:bg-primary/20 group-pressed:bg-primary group-pressed:text-primary-foreground',
             middle: [
-                'group-hover:bg-accent/70',
-                'group-invalid:group-hover:bg-danger/70',
-                'group-pressed:bg-accent',
-                'group-invalid:group-pressed:bg-danger'
+                'group-hover:bg-primary/20',
+                'group-invalid:group-hover:bg-danger-lighter',
+                'group-pressed:bg-primary group-pressed:text-primary-foreground',
+                'group-invalid:group-pressed:bg-danger group-invalid:group-pressed:text-danger-foreground'
             ],
-            cap: 'bg-accent text-accent-foreground group-invalid:bg-danger group-invalid:text-danger-foreground'
+            cap: 'bg-primary text-primary-foreground group-invalid:bg-danger group-invalid:text-danger-foreground'
         },
         isDisabled: {
             true: 'text-muted-foreground'
@@ -103,7 +103,7 @@ function RangeCalendar<T extends Primitive.DateValue>({ errorMessage, ...props }
                     {(date) => (
                         <Primitive.CalendarCell
                             date={date}
-                            className='group size-9 cursor-default text-sm outline outline-0 outside-month:text-secondary selected:bg-accent/70 invalid:selected:bg-danger/70 selection-start:rounded-s-full selection-end:rounded-e-full [td:first-child_&]:rounded-s-full [td:last-child_&]:rounded-e-full'
+                            className='group size-9 cursor-default text-sm outline outline-0 outside-month:text-secondary selected:bg-primary/20 invalid:selected:bg-danger/20 selection-start:rounded-s-md selection-end:rounded-e-md [td:first-child_&]:rounded-s-md [td:last-child_&]:rounded-e-md'
                         >
                             {({ formattedDate, isSelected, isSelectionStart, isSelectionEnd, isDisabled }) => (
                                 <span

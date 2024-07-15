@@ -46,7 +46,7 @@ const generateCompoundVariants = (sides: Array<'top' | 'bottom' | 'left' | 'righ
 }
 
 const sheetVariants = tv({
-    base: 'fixed z-50 grid gap-4 bg-popover text-popover-foreground shadow-lg transition ease-in-out entering:duration-300 entering:animate-in exiting:duration-200 exiting:animate-out',
+    base: 'fixed z-50 grid gap-4 bg-background text-foreground shadow-lg transition ease-in-out entering:duration-300 entering:animate-in exiting:duration-200 exiting:animate-out',
     variants: {
         side: {
             top: 'inset-x-0 top-0 rounded-b-2xl border-b entering:slide-in-from-top exiting:slide-out-to-top',

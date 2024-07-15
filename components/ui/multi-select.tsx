@@ -141,7 +141,7 @@ export function MultiSelect({
                 <div className='relative'>
                     <Primitive.CommandList>
                         {open && selectables.length > 0 ? (
-                            <div className='absolute top-0 z-10 mt-2 max-h-72 w-full overflow-y-auto overflow-x-hidden rounded-lg border bg-popover p-1 text-popover-foreground shadow-md outline-none animate-in'>
+                            <div className='absolute top-0 z-10 mt-2 max-h-72 w-full overflow-y-auto overflow-x-hidden rounded-lg border bg-background p-1 text-foreground shadow-md outline-none animate-in'>
                                 <Primitive.CommandGroup className='h-full overflow-auto p-0'>
                                     {selectables.map((item) => (
                                         <Primitive.CommandItem

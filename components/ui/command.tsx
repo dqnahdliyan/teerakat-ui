@@ -31,7 +31,7 @@ const Command: CommandComponent = React.forwardRef<
         ref={ref}
         className={cn(
             [
-                'flex h-svh w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground sm:h-full',
+                'flex h-svh w-full flex-col overflow-hidden rounded-md bg-background text-foreground sm:h-full',
                 '[&_[cmdk-group-heading]]:ml-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-0 [&_[cmdk-input-wrapper]_svg]:size-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:py-[0.70rem] [&_[cmdk-item]]:pl-3 [&_[cmdk-item]]:pr-4 [&_[cmdk-item]_svg]:mr-2 [&_[cmdk-item]_svg]:size-[1.10rem]'
             ],
             className

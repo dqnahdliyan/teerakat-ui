@@ -8,7 +8,7 @@ const fieldBorderStyles = tv({
     base: 'group-focus-within:border-primary',
     variants: {
         isInvalid: {
-            true: 'border-danger/70 group-focus-within:border-danger/70'
+            true: 'border-danger group-focus-within:border-danger'
         }
     }
 })

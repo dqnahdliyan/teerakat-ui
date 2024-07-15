@@ -128,7 +128,7 @@ export function Trigger({ children, className }: { children: React.ReactNode; cl
     return (
         <Accordion.Trigger
             className={cn(
-                'group relative flex w-full items-center gap-x-2 rounded-md px-2.5 py-2 text-left text-base text-foreground transition-colors hover:bg-accent/20 hover:text-foreground focus:outline-none focus-visible:bg-accent/20 lg:text-sm',
+                'group relative flex w-full items-center gap-x-2 rounded-md px-2.5 py-2 text-left text-base text-foreground transition-colors hover:text-primary focus:outline-none focus-visible:text-primary lg:text-sm',
                 className
             )}
         >
@@ -151,8 +151,8 @@ function AsideLink({ indicatorClassName, className, children, active, ...props }
         <Link
             data-active={isActive}
             className={cn(
-                'relative block rounded-md px-2.5 py-2 text-base font-medium transition-colors hover:bg-accent/20 focus:outline-none focus-visible:bg-accent/20 lg:text-sm',
-                isActive ? 'text-accent' : 'text-foreground',
+                'relative block rounded-md px-2.5 py-2 text-base font-medium transition-colors hover:text-primary focus:outline-none focus-visible:text-primary lg:text-sm',
+                isActive ? 'text-primary' : 'text-foreground',
                 className
             )}
             {...props}

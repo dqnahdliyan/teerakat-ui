@@ -9,7 +9,7 @@ const dropdownItemStyles = tv({
         'group flex cursor-default select-none items-center gap-x-1.5 rounded-md py-2 pl-2.5 pr-1 text-base outline outline-0 lg:text-sm',
         '[&_[data-slot=avatar]]:-mr-0.5 [&_[data-slot=avatar]]:size-6 sm:[&_[data-slot=avatar]]:size-5',
         '[&_svg]:size-4',
-        'has-submenu:open:data-[danger=true]:bg-danger/20 has-submenu:open:data-[danger=true]:text-danger',
+        'has-submenu:open:data-[danger=true]:bg-danger-lighter has-submenu:open:data-[danger=true]:text-danger',
         'has-submenu:open:bg-primary has-submenu:open:text-primary-foreground'
     ],
     variants: {
