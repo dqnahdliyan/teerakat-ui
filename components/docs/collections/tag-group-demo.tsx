@@ -1,6 +1,6 @@
 'use client'
 
-import { Tag, TagGroup } from 'ui'
+import { Tag, TagGroup } from '@/components/ui'
 
 const androidBrands = [
     { id: '1', name: 'Samsung', available: false },

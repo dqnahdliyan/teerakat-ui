@@ -1,7 +1,7 @@
 'use client'
 
 import { NextLogo } from '@/components/logo'
-import { Button, Card, Table } from 'ui'
+import { Button, Card, Table } from '@/components/ui'
 
 export function TableOfButtons() {
     return (

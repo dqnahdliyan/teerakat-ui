@@ -1,6 +1,6 @@
 'use client'
 
-import { Pagination } from 'ui'
+import { Pagination } from '@/components/ui'
 
 export default function SimplePaginationDemo() {
     return (

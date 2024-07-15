@@ -1,8 +1,8 @@
 'use client'
 
+import { Button, Menu } from '@/components/ui'
 import { Selection } from '@react-types/shared'
 import React from 'react'
-import { Button, Menu } from 'ui'
 
 export default function MultipleMenuDemo() {
     const [selected, setSelected] = React.useState<Selection>(new Set(['status']))

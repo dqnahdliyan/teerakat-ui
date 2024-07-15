@@ -1,8 +1,8 @@
 'use client'
 
+import { DropZone, FileTrigger, Label } from '@/components/ui'
 import React from 'react'
 import { FileDropItem } from 'react-aria'
-import { DropZone, FileTrigger, Label } from 'ui'
 
 export default function DropZoneAndFileTriggerDemo() {
     const [files, setFiles] = React.useState<string[] | null>(null)

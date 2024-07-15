@@ -1,9 +1,9 @@
 'use client'
 
+import { Button, buttonVariants, Menu, Modal } from '@/components/ui'
 import { wait } from '@/lib/utils'
 import { Loader2, MoreVertical } from 'lucide-react'
 import React from 'react'
-import { Button, buttonVariants, Menu, Modal } from 'ui'
 
 export default function ModalTriggeredByMenuDemo() {
     const [state, setState] = React.useState<string | null>(null)

@@ -1,7 +1,7 @@
 'use client'
 
+import { Card, Menu, Pagination, Table } from '@/components/ui'
 import { Edit, Eye, MoreVertical, Trash } from 'lucide-react'
-import { Card, Menu, Pagination, Table } from 'ui'
 
 const users = [
     {

@@ -1,7 +1,7 @@
 'use client'
 
+import { Switch } from '@/components/ui'
 import { useTheme } from 'next-themes'
-import { Switch } from 'ui'
 
 export default function SwitchDemo() {
     const { resolvedTheme, setTheme } = useTheme()

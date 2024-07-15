@@ -1,5 +1,5 @@
+import { InputOTP } from '@/components/ui'
 import React from 'react'
-import { InputOTP } from 'ui'
 
 export default function InputOtpControlledDemo() {
     const [value, setValue] = React.useState('')

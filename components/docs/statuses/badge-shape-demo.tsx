@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge } from 'ui'
+import { Badge } from '@/components/ui'
 
 export default function BadgeShapeDemo() {
     return (

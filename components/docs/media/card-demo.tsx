@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Card } from 'ui'
+import { Button, Card } from '@/components/ui'
 
 export default function CardDemo() {
     return (

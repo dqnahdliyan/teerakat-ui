@@ -1,5 +1,5 @@
+import { Button } from '@/components/ui'
 import { toast } from 'sonner'
-import { Button } from 'ui'
 
 export default function ToasterStatusDemo() {
     return (

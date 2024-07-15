@@ -1,8 +1,8 @@
 'use client'
 
 import { OptionPreview } from '@/components/docs/outside/option-preview'
+import { Button, Sheet, Switch } from '@/components/ui'
 import React, { useState } from 'react'
-import { Button, Sheet, Switch } from 'ui'
 import { titleCase } from 'usemods'
 
 type Side = 'left' | 'right' | 'top' | 'bottom'

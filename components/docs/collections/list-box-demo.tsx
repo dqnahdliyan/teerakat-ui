@@ -1,6 +1,6 @@
 'use client'
 
-import { ListBox } from 'ui'
+import { ListBox } from '@/components/ui'
 
 const libraries = [
     { id: 'tw', name: 'Tailwind CSS' },

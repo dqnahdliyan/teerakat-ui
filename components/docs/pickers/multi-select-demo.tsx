@@ -1,7 +1,7 @@
 'use client'
 
+import { MultiSelect } from '@/components/ui'
 import React from 'react'
-import { MultiSelect } from 'ui'
 
 const frameworks = [
     { value: 'next', label: 'Next' },

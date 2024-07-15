@@ -1,7 +1,7 @@
 'use client'
 
+import { Button, Drawer } from '@/components/ui'
 import React from 'react'
-import { Button, Drawer } from 'ui'
 
 export default function DrawerBasicDemo() {
     const [isOpen, setIsOpen] = React.useState(false)

@@ -1,4 +1,4 @@
-import { Avatar } from 'ui'
+import { Avatar } from '@/components/ui'
 
 export default function AvatarSizeDemo() {
     return (

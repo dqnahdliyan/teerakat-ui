@@ -2,9 +2,9 @@
 
 import jsonPreviews from '@/components/docs/generated/previews.json'
 import { Code } from '@/components/docs/rehype/code'
+import { Button, Tabs } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import * as React from 'react'
-import { Button, Tabs } from 'ui'
 
 interface SourceCodeProps extends React.HTMLAttributes<HTMLDivElement> {
     toShow: string | string[]

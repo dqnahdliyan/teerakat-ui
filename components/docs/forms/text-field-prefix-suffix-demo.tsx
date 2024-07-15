@@ -1,7 +1,7 @@
 'use client'
 
 import { XLogo } from '@/components/logo'
-import { TextField } from 'ui'
+import { TextField } from '@/components/ui'
 
 export default function TextFieldDemo() {
     return (

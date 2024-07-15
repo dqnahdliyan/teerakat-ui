@@ -1,10 +1,10 @@
 'use client'
 
 import { GithubLogo } from '@/components/logo'
+import { Avatar, Button, Checkbox, Description, Menu, Modal, Select, Sheet, TextField } from '@/components/ui'
 import { BookKey, Filter, Heart, LogOut, MessageCircle, Settings, User } from 'lucide-react'
 import React from 'react'
 import { Group, Menu as PrimitiveMenu } from 'react-aria-components'
-import { Avatar, Button, Checkbox, Description, Menu, Modal, Select, Sheet, TextField } from 'ui'
 
 export default function SheetMenuDemo() {
     const [isOpen, setIsOpen] = React.useState(false)

@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge, badgeVariants } from 'ui'
+import { Badge, badgeVariants } from '@/components/ui'
 
 type Variant = keyof typeof badgeVariants.variants.variant
 

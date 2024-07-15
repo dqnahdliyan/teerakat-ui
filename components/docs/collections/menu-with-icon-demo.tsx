@@ -2,6 +2,7 @@
 
 import { OptionPreview } from '@/components/docs/outside/option-preview'
 import { FacebookLogo, XLogo } from '@/components/logo'
+import { Avatar, Menu, Select, Switch } from '@/components/ui'
 import { Placement } from '@react-types/overlays'
 import {
     ChevronsUpDown,
@@ -16,7 +17,6 @@ import {
     UserPlus
 } from 'lucide-react'
 import React, { useState } from 'react'
-import { Avatar, Menu, Select, Switch } from 'ui'
 import { placements } from './single-menu-demo'
 
 export default function MenuWithIconDemo() {

@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { DropZone, Label } from 'ui'
+import { DropZone, Label } from '@/components/ui'
 
 export default function DropZoneDemo() {
     let [dropped, setDropped] = React.useState(false)

@@ -1,7 +1,7 @@
 'use client'
 
 import { NextLogo } from '@/components/logo'
-import { Button } from 'ui'
+import { Button } from '@/components/ui'
 
 export default function ButtonOnlyIconDemo() {
     return (

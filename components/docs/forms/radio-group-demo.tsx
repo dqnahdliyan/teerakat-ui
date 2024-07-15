@@ -1,6 +1,6 @@
 'use client'
 
-import { Radio, RadioGroup } from 'ui'
+import { Radio, RadioGroup } from '@/components/ui'
 
 export default function RadioGroupDemo() {
     return (

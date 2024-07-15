@@ -1,4 +1,4 @@
-import { Avatar, AvatarGroup } from 'ui'
+import { Avatar, AvatarGroup } from '@/components/ui'
 
 export default function AvatarGroupDemo() {
     return (

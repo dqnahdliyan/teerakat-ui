@@ -1,7 +1,7 @@
 'use client'
 
+import { Pagination } from '@/components/ui'
 import { Collection } from 'react-aria-components'
-import { Pagination } from 'ui'
 
 const pages = Array.from({ length: 6 }, (_, i) => ({ value: i + 1 }))
 export default function PaginationDynamicDemo() {

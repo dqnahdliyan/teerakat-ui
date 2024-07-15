@@ -1,9 +1,9 @@
 'use client'
 
 import { Code } from '@/components/docs/rehype/code'
+import { Button } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import * as React from 'react'
-import { Button } from 'ui'
 
 interface PlainCodeProps extends React.HTMLAttributes<HTMLDivElement> {
     code: string

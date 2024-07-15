@@ -1,6 +1,6 @@
 'use client'
 
-import { Menu } from 'ui'
+import { Menu } from '@/components/ui'
 
 export default function MenuBasicDemo() {
     return (

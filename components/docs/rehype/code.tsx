@@ -1,11 +1,11 @@
 'use client'
 
+import { CopyButton } from '@/components/ui'
 import { cn } from '@/lib/utils'
 import { Info } from 'lucide-react'
 import React from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nightOwl as theme } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { CopyButton } from 'ui'
 import { copyToClipboard } from 'usemods'
 
 function Code({ lang = 'tsx', code }: { lang?: string; code: string }) {

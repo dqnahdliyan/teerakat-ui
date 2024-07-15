@@ -1,7 +1,7 @@
 'use client'
 
+import { Progress } from '@/components/ui'
 import React from 'react'
-import { Progress } from 'ui'
 
 export default function ProgressDemo() {
     const [value, setValue] = React.useState(1)

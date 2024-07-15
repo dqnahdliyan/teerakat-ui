@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Sheet } from 'ui'
+import { Button, Sheet } from '@/components/ui'
 
 export default function SheetBasicDemo() {
     return (

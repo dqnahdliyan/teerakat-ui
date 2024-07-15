@@ -1,9 +1,9 @@
 'use client'
 
+import { Button, Menu } from '@/components/ui'
 import type { Placement } from '@react-types/overlays'
 import type { Selection } from '@react-types/shared'
 import React from 'react'
-import { Button, Menu } from 'ui'
 
 export const placements = [
     'bottom',

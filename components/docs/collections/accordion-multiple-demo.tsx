@@ -1,6 +1,6 @@
 'use client'
 
-import { Accordion } from 'ui'
+import { Accordion } from '@/components/ui'
 
 export default function AccordionMultipleDemo() {
     return (

@@ -1,6 +1,6 @@
 'use client'
 
-import { Select } from 'ui'
+import { Select } from '@/components/ui'
 
 export const distros = [
     { id: 1, name: 'Debian' },

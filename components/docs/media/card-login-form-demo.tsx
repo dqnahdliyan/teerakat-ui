@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Card, Checkbox, Form, Link, TextField } from 'ui'
+import { Button, Card, Checkbox, Form, Link, TextField } from '@/components/ui'
 
 export default function CardLoginFormDemo() {
     return (

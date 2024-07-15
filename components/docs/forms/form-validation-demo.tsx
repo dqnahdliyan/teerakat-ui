@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Form, TextField } from 'ui'
+import { Button, Form, TextField } from '@/components/ui'
 
 export default function FormValidationDemo() {
     return (

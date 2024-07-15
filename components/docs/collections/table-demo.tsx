@@ -1,6 +1,6 @@
 'use client'
 
-import { Table } from 'ui'
+import { Table } from '@/components/ui'
 
 export const presidents = [
     { id: '1', name: 'Soekarno', year: '1945 - 1965', terms: '20 Years' },

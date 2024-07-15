@@ -1,6 +1,6 @@
 'use client'
 
-import { Avatar, ComboBox } from 'ui'
+import { Avatar, ComboBox } from '@/components/ui'
 
 const users = [
     { id: 1, name: 'Barbara Kirlin Sr.', image_url: 'https://i.pravatar.cc/150?img=1' }

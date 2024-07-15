@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, buttonVariants } from 'ui'
+import { Button, buttonVariants } from '@/components/ui'
 
 type Variant = keyof typeof buttonVariants.variants.variant
 

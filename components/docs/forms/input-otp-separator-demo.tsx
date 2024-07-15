@@ -1,4 +1,4 @@
-import { InputOTP } from 'ui'
+import { InputOTP } from '@/components/ui'
 
 export default function InputOtpSeparatorDemo() {
     return (

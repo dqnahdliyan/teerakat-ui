@@ -1,6 +1,6 @@
 'use client'
 
-import { buttonVariants, Drawer } from 'ui'
+import { buttonVariants, Drawer } from '@/components/ui'
 
 export default function DrawerBasicDemo() {
     return (
