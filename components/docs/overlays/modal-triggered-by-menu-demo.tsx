@@ -1,9 +1,9 @@
 'use client'
 
 import { wait } from '@/lib/utils'
-import { MoreVertical } from 'lucide-react'
+import { Loader2, MoreVertical } from 'lucide-react'
 import React from 'react'
-import { Button, buttonVariants, LoadingDots, Menu, Modal } from 'ui'
+import { Button, buttonVariants, Menu, Modal } from 'ui'
 
 export default function ModalTriggeredByMenuDemo() {
     const [state, setState] = React.useState<string | null>(null)
@@ -76,7 +76,7 @@ export default function ModalTriggeredByMenuDemo() {
                             onPress={actionType(state)?.action}
                             variant={actionType(state)?.confirmText === 'Restore' ? 'primary' : 'danger'}
                         >
-                            {loading ? <LoadingDots className={'bg-foreground'} /> : actionType(state)?.confirmText}
+                            {loading ? <Loader2 className={'animate-spin'} /> : actionType(state)?.confirmText}
                         </Button>
                     </Modal.Footer>
                 </Modal.Content>

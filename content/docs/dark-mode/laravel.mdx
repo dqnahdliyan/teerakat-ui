@@ -158,7 +158,7 @@ declare module 'react-aria-components' {
         }
     }
 }
-`}>
+`}/>
 
 ## Root App
 You can stash it in your `resources/js/app.tsx` like this:
@@ -174,10 +174,10 @@ import { Provider } from "@/components/providers";
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
 createInertiaApp({
-    title: (title) => (title ? `${title} | ${appName}` : appName),
+    title: (title) => (title ? title + ' | ' + appName : appName),
     resolve: (name) =>
         resolvePageComponent(
-            `./pages/${name}.tsx`,
+            "./pages/" + name + ".tsx",
             import.meta.glob("./pages/**/*.tsx"),
         ),
     setup({ el, App, props }) {
@@ -201,7 +201,7 @@ createInertiaApp({
 
 ## Theme Switcher
 <Install items={['lucide-react']}/>
-```
+```tsx
 import { Moon, Sun } from 'lucide-react'
 import { Button } from '@/Components/ui/button'
 import { useTheme } from '@/Components/theme-provider'
