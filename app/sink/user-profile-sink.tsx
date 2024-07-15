@@ -1,7 +1,7 @@
 'use client'
 import DropZoneAndFileTriggerDemo from '@/components/docs/drag-and-drop/drop-zone-and-file-trigger-demo'
 import TextareaDemo from '@/components/docs/forms/textarea-demo'
-import { Avatar, Card, DateField, Heading, NumberField, Tabs, TextField, TimeField } from '@/components/ui'
+import { Avatar, Card, DatePicker, Heading, NumberField, Tabs, TextField, TimeField } from '@/components/ui'
 import { Phone } from 'lucide-react'
 import Image from 'next/image'
 
@@ -35,7 +35,7 @@ export default function UserProfileSink() {
                         </Tabs.List>
                         <Tabs.Content id='t1'>
                             <div className='w-full items-end flex gap-3 mb-7'>
-                                <DateField label='Birthdate' className='w-full' />
+                                <DatePicker label='Birthdate' className='w-full' />
                                 <TimeField />
                             </div>
                             <div>
