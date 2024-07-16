@@ -45,6 +45,7 @@ const renderHierarchy = (node: HierarchyNode, level: number = 0) => {
         const order = ['getting-started', 'dark-mode', 'components']
         return order.indexOf(a) - order.indexOf(b)
     })
+
     return (
         <>
             <Accordion multiple defaultValue={[0, 2]}>
@@ -60,49 +61,60 @@ const renderHierarchy = (node: HierarchyNode, level: number = 0) => {
                                     {titleCase((value as Doc).title)}
                                 </AsideLink>
                             ) : (
-                                <Accordion multiple>
+                                <>
                                     <div className='absolute left-4 h-full w-px bg-secondary'></div>
-                                    {Object.entries(value as HierarchyNode).map(([subKey, subValue], index: number) =>
-                                        typeof subValue === 'object' && 'title' in subValue ? (
-                                            <AsideLink className='pl-[2rem]' key={index} href={`/${subValue.slug}`}>
-                                                {titleCase((subValue as Doc).title)}
-                                            </AsideLink>
-                                        ) : (
-                                            <Accordion.Item className='group border-0' key={index}>
-                                                <Trigger className='pl-[2rem] text-foreground group-data-[state=open]:text-primary'>
-                                                    {titleCase(subKey)}
-                                                </Trigger>
-                                                <Accordion.Content className='relative overflow-hidden text-sm transition-all'>
-                                                    {Object.entries(subValue as HierarchyNode).map(
-                                                        ([childKey, childValue], index: number) =>
-                                                            typeof childValue === 'object' && 'title' in childValue ? (
-                                                                <AsideLink
-                                                                    className='ml-[-0rem] pl-[3rem]'
-                                                                    key={index}
-                                                                    href={`/${childValue.slug}`}
-                                                                    indicatorClassName=''
-                                                                >
-                                                                    {titleCase((childValue as Doc).title)}
-                                                                </AsideLink>
-                                                            ) : (
-                                                                <Accordion.Item className='border-0' key={index}>
-                                                                    <Trigger className='text-foreground group-data-[state=open]:text-primary'>
-                                                                        {titleCase(childKey)}
-                                                                    </Trigger>
-                                                                    <Accordion.Content className='overflow-hidden text-sm transition-all'>
-                                                                        {renderHierarchy(
-                                                                            childValue as HierarchyNode,
-                                                                            level + 1
-                                                                        )}
-                                                                    </Accordion.Content>
-                                                                </Accordion.Item>
-                                                            )
-                                                    )}
-                                                </Accordion.Content>
-                                            </Accordion.Item>
-                                        )
-                                    )}
-                                </Accordion>
+                                    <Accordion multiple>
+                                        {Object.entries(value as HierarchyNode).map(
+                                            ([subKey, subValue], index: number) =>
+                                                typeof subValue === 'object' && 'title' in subValue ? (
+                                                    <AsideLink
+                                                        className='pl-[2rem]'
+                                                        key={index}
+                                                        href={`/${subValue.slug}`}
+                                                    >
+                                                        {titleCase((subValue as Doc).title)}
+                                                    </AsideLink>
+                                                ) : (
+                                                    <Accordion.Item className='group border-0' key={index}>
+                                                        <Trigger className='pl-[2rem] text-foreground group-data-[state=open]:text-primary'>
+                                                            {titleCase(subKey)}
+                                                        </Trigger>
+                                                        <Accordion.Content className='relative overflow-hidden text-sm transition-all'>
+                                                            {Object.entries(subValue as HierarchyNode).map(
+                                                                ([childKey, childValue], index: number) =>
+                                                                    typeof childValue === 'object' &&
+                                                                    'title' in childValue ? (
+                                                                        <AsideLink
+                                                                            className='ml-[-0rem] pl-[3rem]'
+                                                                            key={index}
+                                                                            href={`/${childValue.slug}`}
+                                                                            indicatorClassName=''
+                                                                        >
+                                                                            {titleCase((childValue as Doc).title)}
+                                                                        </AsideLink>
+                                                                    ) : (
+                                                                        <Accordion.Item
+                                                                            className='border-0'
+                                                                            key={index}
+                                                                        >
+                                                                            <Trigger className='text-foreground group-data-[state=open]:text-primary'>
+                                                                                {titleCase(childKey)}
+                                                                            </Trigger>
+                                                                            <Accordion.Content className='overflow-hidden text-sm transition-all'>
+                                                                                {renderHierarchy(
+                                                                                    childValue as HierarchyNode,
+                                                                                    level + 1
+                                                                                )}
+                                                                            </Accordion.Content>
+                                                                        </Accordion.Item>
+                                                                    )
+                                                            )}
+                                                        </Accordion.Content>
+                                                    </Accordion.Item>
+                                                )
+                                        )}
+                                    </Accordion>
+                                </>
                             )}
                         </Accordion.Content>
                     </Accordion.Item>
@@ -124,9 +136,10 @@ const Aside = () => {
 
 export { Aside }
 
-export function Trigger({ children, className }: { children: React.ReactNode; className?: string }) {
+export function Trigger({ children, className, ...props }: { children: React.ReactNode; className?: string }) {
     return (
         <Accordion.Trigger
+            {...props}
             className={cn(
                 'group relative flex w-full items-center gap-x-2 rounded-md px-2.5 py-2 text-left text-base text-foreground transition-colors hover:text-primary focus:outline-none focus-visible:text-primary lg:text-sm',
                 className

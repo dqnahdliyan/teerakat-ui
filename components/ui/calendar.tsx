@@ -81,7 +81,7 @@ const cell = tv({
             none: 'group-hover:bg-primary/20 group-pressed:bg-primary group-pressed:text-primary-foreground',
             middle: [
                 'group-hover:bg-primary/20',
-                'group-invalid:group-hover:bg-danger-lighter',
+                'group-invalid:group-hover:bg-danger',
                 'group-pressed:bg-primary group-pressed:text-primary-foreground',
                 'group-invalid:group-pressed:bg-danger group-invalid:group-pressed:text-danger-foreground'
             ],
