@@ -41,7 +41,7 @@ const boxStyles = tv({
             ]
         },
         isInvalid: {
-            true: 'border-danger bg-danger-lighter text-danger-foreground ring-danger/20'
+            true: 'border-danger bg-danger text-danger-foreground ring-danger/20'
         }
     }
 })

@@ -11,8 +11,8 @@ import { Dialog } from './dialog'
 export const modalVariants = tv({
     base: [
         'fixed bottom-0 left-[50%] top-auto z-50 grid w-full max-w-full translate-x-[-50%] gap-4 rounded-t-xl border border-b-transparent bg-background p-2 shadow-lg outline-none sm:bottom-auto sm:top-[40%] sm:translate-y-[-50%] sm:rounded-xl sm:border-b-border',
-        'sm:entering:slide-in-from-bottom-auto entering:animate-in entering:fade-in-0 entering:slide-in-from-bottom-1/2 entering:slide-in-from-left-1/2 entering:[transition-timing-function:ease-out] sm:entering:slide-in-from-top-[58%]',
-        'exiting:animate-out exiting:fade-out-0 exiting:slide-out-to-bottom-1/2 exiting:slide-out-to-left-1/2 exiting:[transition-timing-function:ease] sm:exiting:slide-out-to-top-[58%]'
+        'entering:[transition-timing-function:ease-out] entering:animate-in entering:fade-in-0 entering:zoom-in-95 entering:slide-in-from-top-1/2 entering:slide-in-from-left-1/2',
+        'exiting:[transition-timing-function:ease] exiting:animate-out exiting:fade-out-0 exiting:zoom-out-95 exiting:slide-out-to-top-1/2 exiting:slide-out-to-left-1/2'
     ],
     variants: {
         size: {
@@ -60,7 +60,7 @@ const ModalOverlay = ({ className, isDismissable = true, ...props }: Primitive.M
             isDismissable={isDismissable}
             className={(values) =>
                 cn(
-                    'fixed inset-0 z-50 bg-black/60 backdrop-blur-sm entering:animate-in entering:fade-in-0 exiting:animate-in exiting:fade-out-0',
+                    'fixed inset-0 z-50 bg-black/60 backdrop-blur-sm entering:animate-in entering:fade-in-0 exiting:animate-out exiting:fade-out-0',
                     typeof className === 'function' ? className(values) : className
                 )
             }

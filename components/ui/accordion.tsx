@@ -61,14 +61,13 @@ function Accordion({ className, children, multiple, defaultValue }: AccordionPro
 interface AccordionItemProps {
     children: React.ReactNode
     className?: string
-    active?: boolean
 }
 
-function AccordionItem({ className, active, children, ...props }: AccordionItemProps) {
+function AccordionItem({ className, children, ...props }: AccordionItemProps) {
     const { isActive } = useAccordion()
     return (
         <div
-            data-state={isActive || active ? 'open' : 'closed'}
+            data-state={isActive ? 'open' : 'closed'}
             className={cn('relative w-full overflow-hidden border-b', className)}
             {...props}
         >
@@ -80,15 +79,14 @@ function AccordionItem({ className, active, children, ...props }: AccordionItemP
 interface AccordionTriggerProps {
     children: React.ReactNode
     className?: string
-    active?: boolean
 }
 
-function AccordionTrigger({ className, active, children, ...props }: AccordionTriggerProps) {
+function AccordionTrigger({ className, children, ...props }: AccordionTriggerProps) {
     const { isActive, index, onChangeIndex } = useAccordion()
 
     return (
         <Button
-            data-state={isActive || active ? 'open' : 'closed'}
+            data-state={isActive ? 'open' : 'closed'}
             className={cn(
                 'flex w-full flex-1 items-center justify-between rounded-md py-4 text-base font-medium outline-none transition-all',
                 className
@@ -118,14 +116,17 @@ function AccordionTrigger({ className, active, children, ...props }: AccordionTr
 interface AccordionContentProps {
     children: React.ReactNode
     className?: string
+    active?: boolean
 }
 
-function AccordionContent({ className, children, ...props }: AccordionContentProps) {
+function AccordionContent({ className, active, children, ...props }: AccordionContentProps) {
     const { isActive } = useAccordion()
 
+    const open = isActive || active
+
     return (
-        <AnimatePresence initial={false}>
-            {isActive && (
+        <AnimatePresence initial={open}>
+            {open && (
                 <motion.div
                     initial={{ height: 0 }}
                     animate={{ height: 'auto' }}

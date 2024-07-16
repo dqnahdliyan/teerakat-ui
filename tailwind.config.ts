@@ -27,44 +27,30 @@ const config: Config = {
                 border: 'hsl(var(--border))',
                 primary: {
                     DEFAULT: 'hsl(var(--primary))',
-                    lighter: 'hsl(var(--primary-lighter))',
-                    darker: 'hsl(var(--primary-darker))',
                     foreground: 'hsl(var(--primary-foreground))'
                 },
                 secondary: {
                     DEFAULT: 'hsl(var(--secondary))',
-                    lighter: 'hsl(var(--secondary-lighter))',
-                    darker: 'hsl(var(--secondary-darker))',
                     foreground: 'hsl(var(--secondary-foreground))'
                 },
                 danger: {
                     DEFAULT: 'hsl(var(--danger))',
-                    lighter: 'hsl(var(--danger-lighter))',
-                    darker: 'hsl(var(--danger-darker))',
                     foreground: 'hsl(var(--danger-foreground))'
                 },
                 success: {
                     DEFAULT: 'hsl(var(--success))',
-                    lighter: 'hsl(var(--success-lighter))',
-                    darker: 'hsl(var(--success-darker))',
                     foreground: 'hsl(var(--success-foreground))'
                 },
                 info: {
                     DEFAULT: 'hsl(var(--info))',
-                    lighter: 'hsl(var(--info-lighter))',
-                    darker: 'hsl(var(--info-darker))',
                     foreground: 'hsl(var(--info-foreground))'
                 },
                 warning: {
                     DEFAULT: 'hsl(var(--warning))',
-                    lighter: 'hsl(var(--warning-lighter))',
-                    darker: 'hsl(var(--warning-darker))',
                     foreground: 'hsl(var(--warning-foreground))'
                 },
                 dark: {
                     DEFAULT: 'hsl(var(--dark))',
-                    lighter: 'hsl(var(--dark-lighter))',
-                    darker: 'hsl(var(--dark-darker))',
                     foreground: 'hsl(var(--dark-foreground))'
                 },
                 accent: {
@@ -83,20 +69,6 @@ const config: Config = {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
                 sm: 'calc(var(--radius) - 4px)'
-            },
-            keyframes: {
-                'accordion-down': {
-                    from: { height: '0' },
-                    to: { height: '50' }
-                },
-                'accordion-up': {
-                    from: { height: '50' },
-                    to: { height: '0' }
-                }
-            },
-            animation: {
-                'accordion-down': 'accordion-down 0.2s ease-in-out',
-                'accordion-up': 'accordion-up 0.2s ease-in-out'
             }
         }
     },
